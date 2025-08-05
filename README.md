@@ -34,11 +34,13 @@ Super Minitroid **removed nearly all horizontal air movement**, making Samus fee
 | **0x81F7D** | Spinning jump horizontal speed | **01** | **00** | ❌ NO air control |
 | **0x81F65** | Running max speed | **02** | **01** | 🐌 Halved speed |
 | **0x81FA1** | Horizontal speed after ledge fall | **01** | **00** | ❌ NO ledge momentum |
+| **0x82049** | Wall jump horizontal speed | **01** | **00** | ❌ NO wall jump momentum |
 
 ### Impact Analysis
 - **Air Control**: Super Minitroid = **0** vs Original = **1** (infinite improvement needed!)
 - **Running Speed**: Super Minitroid = **1** vs Original = **2** (50% reduction)
 - **Ledge Momentum**: Super Minitroid = **0** vs Original = **1** (infinite improvement needed!)
+- **Wall Jump Momentum**: Super Minitroid = **0** vs Original = **1** (infinite improvement needed!)
 
 ---
 
@@ -73,6 +75,7 @@ Super Minitroid **removed nearly all horizontal air movement**, making Samus fee
 | **Spinning jump** | 0 | 1 | **∞** (0→1, infinite!) |
 | **Running speed** | 1 | 1 | **1x** (unchanged) |
 | **Ledge falling** | 0 | 1 | **∞** (0→1, infinite!) |
+| **Wall jump** | 0 | 1 | **∞** (0→1, infinite!) |
 
 ### Real Impact
 - **Transformed**: Zero air control → Precise air control
@@ -166,7 +169,7 @@ python3 horizontal_momentum_120/create_horizontal_momentum_120.py
 
 ### IPS Patch Structure
 - **Format**: Standard IPS (PATCH...EOF)
-- **Size**: 32 bytes (4 single-byte modifications)
+- **Size**: 38 bytes (5 single-byte modifications)
 - **Compatibility**: All IPS patching tools
 - **Base ROM**: Apply to Super Minitroid.smc
 
@@ -175,6 +178,7 @@ python3 horizontal_momentum_120/create_horizontal_momentum_120.py
 - **0x81F7D**: Controls left/right movement during spinning jumps  
 - **0x81F65**: Controls maximum running speed (byte after acceleration)
 - **0x81FA1**: Controls horizontal momentum when falling off ledges
+- **0x82049**: Controls horizontal momentum after wall jumps
 
 ### SNES Technical Context
 - **CPU**: 65816 processor
@@ -189,6 +193,7 @@ python3 horizontal_momentum_120/create_horizontal_momentum_120.py
 ### Problem Solved
 ✅ **Eliminated the "zero air control" issue**
 ✅ **Preserved all Super Minitroid features** 
+✅ **Fixed wall jump horizontal momentum**
 ✅ **Created scalable solution for any speed preference**
 ✅ **Documented complete methodology for future ROM hackers**
 
