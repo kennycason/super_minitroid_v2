@@ -26,14 +26,7 @@ Super Minitroid didn't just reduce horizontal momentum - it **completely elimina
 
 **Result**: All movement types now have proper horizontal momentum (0→1+ = infinite improvement)
 
-## Speed Guide
-
-| Speed | Feel | Notes |
-|-------|------|-------|
-| **1** | ⭐ **Balanced** | Recommended starting point |
-| **2-3** | Slightly faster | Conservative boost |
-| **4-6** | Moderate | Good for speedruns |
-| **7+** | Fast | Experimental territory |
+Note that if values are too high, Samus will clip through tiles.
 
 ## Usage
 
